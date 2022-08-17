@@ -1,6 +1,6 @@
 [submodule "frontend"]
 	path = frontend
-	url = ./frontend/
+	url = https://github.com/colour-me-bibi/WhatAreTheOdds-frontend.git
 [submodule "backend"]
 	path = backend
-	url = ./backend/
+	url = https://github.com/colour-me-bibi/WhatAreTheOdds-backend.git
