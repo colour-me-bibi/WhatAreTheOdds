@@ -1,0 +1,31 @@
+version: "3"
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - wato-staticfiles:/usr/share/nginx/html/static
+
+  backend:
+    build: ./backend
+    volumes:
+      - wato-staticfiles:/app/static
+    environment:
+      - DATABASE_URL=postgres://wato:wato@postgres:5432/wato
+      - SECRET_KEY=wato
+      - DEBUG=True
+      - PORT=8080
+      - HOST=
+
+  postgres:
+    image: postgres
+    volumes:
+      - wato-db-data:/var/lib/postgresql/data
+    env_file:
+      - .env.local
+
+volumes:
+  wato-staticfiles:
+  wato-db-data:

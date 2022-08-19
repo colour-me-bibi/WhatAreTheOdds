@@ -1,33 +1,25 @@
 version: "3"
 services:
-  #
-  # TODO two networks, one backend and one frontend
-  # TODO mess with start order?
-
   frontend:
     build: ./frontend
     ports:
-      - ${HTTP_PORT:-80}:80
-      # - ${HTTPS_PORT:-443}:443
+      - 8000:80
     volumes:
       - wato-staticfiles:/usr/share/nginx/html/static
 
   backend:
     build: ./backend
-    env_file:
-      - .env
     volumes:
       - wato-staticfiles:/app/static
+    env_file:
+      - .env.local
 
   postgres:
     image: postgres
     volumes:
       - wato-db-data:/var/lib/postgresql/data
     env_file:
-      - .env
-  #
-  # redis:
-  #   image: redis
+      - .env.local
 
 volumes:
   wato-staticfiles:
