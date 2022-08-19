@@ -1,4 +1,4 @@
-name: merge-release
+name: Merge release into master
 on:
   push:
     branches:
