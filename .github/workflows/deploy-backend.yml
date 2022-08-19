@@ -25,4 +25,4 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - working-directory: ./backend/
-      - run: aws s3 sync ./static/ s3://wato-staticfiles/static/ --delete
+        run: aws s3 sync ./static/ s3://wato-staticfiles/static/ --delete
